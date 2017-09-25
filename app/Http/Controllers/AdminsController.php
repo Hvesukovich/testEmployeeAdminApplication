@@ -36,6 +36,11 @@ class AdminsController extends Controller
             (isset($input['password']) && $input['password'] != '') &&
             (isset($input['adress']) && $input['adress'] != ''))
         {
+            $Admins = new User();
+            $admin = null;
+            if (isset($input['id']) && $input['id'] != '') {
+                $admin = $Admins->find($input['id']);
+            }
             $src_photo = 'images/';
             if ((isset($_FILES["upload"]) && ($_FILES["upload"]['tmp_name']) != '')) {
                 $info_file = pathinfo($_FILES["upload"]["name"]);
@@ -44,13 +49,19 @@ class AdminsController extends Controller
                 $src_photo .= $name;
                 move_uploaded_file($_FILES["upload"]["tmp_name"], $src_photo);
                 $src_photo = "../../". $src_photo;
-            } else {
-                $src_photo = '../../images/holder.jpg';
+            }
+            else {
+                if($admin['img'] == '') {
+                    $src_photo = '../../images/holder.jpg';
+                } else {
+                    $src_photo = $admin['img'];
+                }
+
             }
 
-            $Admins = new User();
+
             if (isset($input['id']) && $input['id'] != '') {
-                $Admins->find($input['id'])->update([
+                $admin->update([
                     'firstName' => $input['firstName'],
                     'lastName' => $input['lastName'],
                     'DateOfBirth' => $input['dateOfBirth'],
@@ -63,7 +74,7 @@ class AdminsController extends Controller
                 $Admins->create([
                     'firstName' => $input['firstName'],
                     'lastName' => $input['lastName'],
-                    'DateOfBirth' => '2017-05-14',
+                    'DateOfBirth' => $input['dateOfBirth'],
                     'email' => $input['email'],
                     'password' => $input['password'],
                     'adress' => $input['adress'],
