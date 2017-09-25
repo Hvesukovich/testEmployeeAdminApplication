@@ -22,12 +22,12 @@
                     @foreach($admins as $value)
                 <tr>
                     <th scope="row">{{ $value['id'] }}</th>
-                    <td>{{ $value['firstName'] }}</td>
+                    <td><a href="/admins/admin-details/{{ $value['id'] }}">{{ $value['firstName'] }}</a></td>
                     <td>{{ $value['lastName'] }}</td>
                     <td>{{ $value['DateOfBirth'] }}</td>
                     <td>
-                        <a href="/admins/edit/{{ $value['id'] }}" class='cursor-pointer text-info' title='Редактировать'><i class='fa fa-pencil'></i></a>
-                        <a href="/admins/del/{{ $value['id'] }}" class='btn btn-success cursor-pointer text-danger' title='Удалить'><i class='fa fa-trash'></i></a>
+                        <a href="/admins/edit/{{ $value['id'] }}" class='btn btn-secondary cursor-pointer text-dark' title='Edit'><i class='fa fa-pencil'></i></a>
+                        <a href="/admins/del/{{ $value['id'] }}" class='btn btn-secondary cursor-pointer text-danger' title='Delite'><i class='fa fa-trash'></i></a>
                     </td>
                 </tr>
                     @endforeach

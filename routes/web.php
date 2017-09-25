@@ -24,6 +24,7 @@ Route::get('/admin-panel/admins', 'AdminsController@getAllAdmins');
 
 
 
+Route::get('/admins/admin-details/{id}', 'AdminsController@adminDetails');
 Route::get('/admins/edit/{id?}', 'AdminsController@editAdmin');
 Route::post('/admins/adminEditSave', 'AdminsController@adminEditSave');
 Route::get('/admins/del/{id}', 'AdminsController@delAdmin');

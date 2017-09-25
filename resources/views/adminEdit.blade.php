@@ -14,7 +14,8 @@
                         <label for="firstName" class="input-group-addon cursor-pointer">First Name</label>
                         <input name="firstName" id="firstName" type="text" class="form-control"
                                placeholder="First Name" required
-                               @if(isset($admin)) value="{{ $admin['firstName'] }}" @endif>
+                               @if(isset($admin)) value="{{ $admin['firstName'] }}" @endif
+                               onchange="document.getElementById('editImgPhoto').title = this.value + ' ' + document.getElementById('lastName').value">
                     </div>
                 </div>
                 <div class="col-12 form-group">
@@ -22,7 +23,8 @@
                         <label for="lastName" class="input-group-addon cursor-pointer">Last Name</label>
                         <input name="lastName" id="lastName" type="text" class="form-control"
                                placeholder="Last Name" required
-                               @if(isset($admin)) value="{{ $admin['lastName'] }}" @endif>
+                               @if(isset($admin)) value="{{ $admin['lastName'] }}" @endif
+                               onchange="document.getElementById('editImgPhoto').title = document.getElementById('firstName').value + ' ' + this.value">
                     </div>
                 </div>
                 <div class="col-12 form-group">

@@ -83,4 +83,12 @@ class AdminsController extends Controller
             return \Redirect::action('AdminsController@getAllAdmins');
         }
     }
+
+    function adminDetails($id) {
+        if ($id) {
+            $Admins = new User();
+            $admin = $Admins->find($id);
+            return view('admin-details', ['admin'=>$admin]);
+        }
+    }
 }

@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{--<title>{{ config('app.name', 'Laravel') }}</title>--}}
+    <title>Admin panel</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,8 +30,9 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('/admin-panel/admins') }}">
+                        {{--{{ config('app.name', 'Laravel') }}--}}
+                        Admin panel
                     </a>
                 </div>
 
